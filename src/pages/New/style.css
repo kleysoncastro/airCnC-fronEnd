@@ -15,3 +15,11 @@ label#thumbnail input {
 
     display: none;
 }
+
+label#thumbnail.has-thumbnail {
+    border: 0;
+}
+
+label#thumbnail.has-thumbnail img {
+    display: none;
+}
