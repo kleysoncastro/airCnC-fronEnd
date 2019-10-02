@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import api from './servces'
 import './App.css';
 import logo from './assets/logo.svg'
+import Routes from './routes'
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
 
      <img src={logo} alt="aircnc"/>
      <div className="content">
+       <Routes />
        <p>
          Ofereça <strong>Sptos</strong> para programadores e contrate <strong>talentos</strong> para sua empresa
        </p>
