@@ -15,7 +15,9 @@ function App() {
     const response = await api.post('/sessions', {email})
 
     const {_id} = response.data;
-    console.log(_id)
+
+    // salva no browser
+    localStorage.setItem('user', _id);
  
   }// fim handleSubmit
 
