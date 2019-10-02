@@ -1,5 +1,6 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import api from '../../servces'
+import './style.css'
 
 /* 
  * useEffect é usaca como uma lista observavel 
@@ -12,6 +13,14 @@ import api from '../../servces'
 
 export default function Bashboard() {
     
+    const [spots, setSpots] = useState([])
+    /* 
+        * useStade 
+        * parametros em [spots, setSpots] spots a ser obserado
+        * setSpots para modificar a variavel
+    */
+    
+
     useEffect(()=>{
 
         async function loadSposts() {
@@ -21,11 +30,26 @@ export default function Bashboard() {
                 headers: {user_id}
             
             });
-            console.log(response.data)
+          
+            setSpots(response.data)
         }
 
         loadSposts();
     }, [])
     
-    return <h1>Dashboard</h1>
+    return (
+    
+    <>
+        <ul className="spot-list">
+
+            {spots.map(spot => ( 
+                    <li key={spot._id}>
+                        <header style={{ backgroundImage: `url(${spot.thumbnail_url})` }} />
+                        <strong>{spot.company}</strong>
+                        <span>{spot.price ? `R$${spot.price}/dia`: 'GRATUITO'}</span>
+                    </li>
+            ))}
+        </ul>
+    </>
+    )// fim return
 }
